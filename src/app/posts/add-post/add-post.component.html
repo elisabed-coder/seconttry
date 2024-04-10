@@ -1,0 +1,45 @@
+<div class="overlay">
+  <div class="popup">
+    <i class="fa-solid fa-rectangle-xmark" (click)="OnCloseForm()"></i>
+    <form
+      action="#"
+      class="form"
+      #taskForm="ngForm"
+      (ngSubmit)="OnFormSubmitted(taskForm)"
+    >
+      <div>
+        <label>Post Author</label>
+        <input type="text" name="author" [required]="true" ngModel />
+        <div
+          *ngIf="taskForm.controls['author'] && taskForm.controls['author'].errors?.['required'] && taskForm.controls['author'].touched"
+          class="error"
+        >
+          Author is required
+        </div>
+      </div>
+      <div>
+        <label for="">Title</label>
+        <input type="text" name="title" [required]="true" ngModel />
+        <div
+          *ngIf="taskForm.controls['title'] && taskForm.controls['title'].errors?.['required'] && taskForm.controls['title'].touched"
+          class="error"
+        >
+          Title is required
+        </div>
+      </div>
+      <div>
+        <label for="">Body</label>
+        <input type="text" name="body" [required]="true" ngModel />
+        <div
+          *ngIf="taskForm.controls['body'] && taskForm.controls['body'].errors?.['required'] && taskForm.controls['body'].touched"
+          class="error"
+        >
+          Body is required
+        </div>
+      </div>
+      <div>
+        <button type="submit" [disabled]="taskForm.invalid">Add</button>
+      </div>
+    </form>
+  </div>
+</div>
