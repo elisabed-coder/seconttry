@@ -1,9 +1,12 @@
 export class Task {
   constructor(
     public userId: number,
-    public user: string,
+    public user: User,
     public title: string,
     public body: string,
-    public id?: string
+    public id?: number
   ) {}
+}
+export class User {
+  constructor(public id: number, public name: string) {}
 }

@@ -1,1 +1,22 @@
-<p>edit-post works!</p>
+<div class="edit-form">
+  <form #postForm="ngForm">
+    <button type="button" (click)="onCloseEditPost()">
+      Closeform
+      <i class="fa-solid fa-arrow-left"></i>
+    </button>
+    <div *ngIf="selectedTask">
+      <label>Title:</label>
+      <input
+        type="text"
+        [(ngModel)]="selectedTask.title"
+        name="title"
+        required
+      />
+      <br />
+      <label>Body:</label>
+      <textarea [(ngModel)]="selectedTask.body" name="body" required></textarea>
+      <br />
+      <button type="button">Edit</button>
+    </div>
+  </form>
+</div>

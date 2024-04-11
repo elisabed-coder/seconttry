@@ -9,9 +9,9 @@
     >
       <div>
         <label>Post Author</label>
-        <input type="text" name="author" [required]="true" ngModel />
+        <input type="text" name="name" [required]="true" ngModel />
         <div
-          *ngIf="taskForm.controls['author'] && taskForm.controls['author'].errors?.['required'] && taskForm.controls['author'].touched"
+          *ngIf="taskForm.controls['name'] && taskForm.controls['name'].errors?.['name'] && taskForm.controls['name'].touched"
           class="error"
         >
           Author is required
