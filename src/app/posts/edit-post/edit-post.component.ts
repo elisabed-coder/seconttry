@@ -8,6 +8,7 @@ import { Task } from 'src/app/Model/Task';
 })
 export class EditPostComponent implements OnInit {
   @Output() CloseEditPost: EventEmitter<void> = new EventEmitter<void>();
+  @Output() UpdatePost: EventEmitter<Task> = new EventEmitter<Task>();
 
   @Input() selectedTask: Task | null = null;
 
@@ -16,6 +17,15 @@ export class EditPostComponent implements OnInit {
   ngOnInit(): void {}
 
   onCloseEditPost() {
+    this.CloseEditPost.emit();
+  }
+
+  EditedPost() {
+    // Emit the updated post data
+    if (this.selectedTask) {
+      // Emit the updated post data
+      this.UpdatePost.emit(this.selectedTask);
+    }
     this.CloseEditPost.emit();
   }
 }

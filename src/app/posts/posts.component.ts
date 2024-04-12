@@ -13,7 +13,6 @@ export class PostsComponent implements OnInit {
   showEditPost: boolean = false;
   selectedTask: Task | null = null;
 
-  http: HttpClient = inject(HttpClient);
   allTasks: Task[] = [];
 
   OpenCreateTaskForm() {
@@ -24,7 +23,7 @@ export class PostsComponent implements OnInit {
     this.showCreateTaskForm = false;
   }
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
     this.fetchAllTasks();
@@ -118,5 +117,15 @@ export class PostsComponent implements OnInit {
   CloseEditPost() {
     this.showEditPost = false;
     this.selectedTask = null;
+  }
+
+  UpdatePost(updatedPost: Task) {
+    // Find the index of the updated post
+    const index = this.allTasks.findIndex((task) => task.id === updatedPost.id);
+
+    if (index !== -1) {
+      // Update the post in the array
+      this.allTasks[index] = updatedPost;
+    }
   }
 }

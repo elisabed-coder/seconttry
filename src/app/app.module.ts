@@ -13,7 +13,8 @@ import { TodoComponent } from './todo/todo.component';
 import { NotFoundComponentComponent } from './not-found-component/not-found-component.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { map, pipe } from 'rxjs';
+import { CommentsComponent } from './posts/edit-post/comments/comments.component';
+import { AlbumDetailsComponent } from './albums/album-details/album-details.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,8 @@ import { map, pipe } from 'rxjs';
     AlbumsComponent,
     TodoComponent,
     NotFoundComponentComponent,
+    CommentsComponent,
+    AlbumDetailsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

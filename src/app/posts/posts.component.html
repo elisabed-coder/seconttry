@@ -3,27 +3,29 @@
   (EmitTaskData)="CreateTask($event)"
   (CloseForm)="CloseCreateTaskForm()"
 ></app-add-post>
-<!-- (EmitTaskData)="CreateTask($event)" -->
 <section *ngIf="!showEditPost">
   <div class="post-section-container">
     <button class="addPost-btn" (click)="OpenCreateTaskForm()">Add Post</button>
-    <ul class="post-headers">
-      <li>POST'S USER</li>
-      <li>TITLE</li>
-      <li>BODY</li>
-    </ul>
-    <div class="post-information">
-      <ul *ngFor="let task of allTasks" (click)="openEditPost(task)">
-        <li>{{ task.user.name }}</li>
-        <li>{{ task.title }}</li>
-        <li>{{ task.body }}</li>
+    <div class="posts-container">
+      <ul class="post-headers">
+        <li>POST'S USER</li>
+        <li>TITLE</li>
+        <li>BODY</li>
       </ul>
+      <div class="post-information">
+        <ul *ngFor="let task of allTasks" (click)="openEditPost(task)">
+          <li>{{ task.user.name }}</li>
+          <li>{{ task.title }}</li>
+          <li>{{ task.body }}</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 <app-edit-post
   *ngIf="showEditPost"
   (CloseEditPost)="CloseEditPost()"
-  (selectedTask)="(selectedTask)"
+  [selectedTask]="selectedTask"
+  (UpdatePost)="UpdatePost($event)"
 ></app-edit-post>
 <router-outlet></router-outlet>
