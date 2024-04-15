@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Task } from 'src/app/Model/Task';
 
 @Component({
@@ -12,9 +13,14 @@ export class EditPostComponent implements OnInit {
 
   @Input() selectedTask: Task | null = null;
 
-  constructor() {}
+  constructor(private route: ActivatedRoute, private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.route.paramMap.subscribe((params) => {
+      const postId = params.get('id');
+      // Now you can use this postId to fetch the post data or perform any other operation
+    });
+  }
 
   onCloseEditPost() {
     this.CloseEditPost.emit();

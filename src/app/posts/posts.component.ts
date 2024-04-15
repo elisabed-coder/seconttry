@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Task } from '../Model/Task';
 import { forkJoin } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-posts',
@@ -13,6 +14,7 @@ export class PostsComponent implements OnInit {
   showEditPost: boolean = false;
   selectedTask: Task | null = null;
 
+  // http: HttpClient = inject(HttpClient);
   allTasks: Task[] = [];
 
   OpenCreateTaskForm() {
@@ -23,7 +25,7 @@ export class PostsComponent implements OnInit {
     this.showCreateTaskForm = false;
   }
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
     this.fetchAllTasks();
@@ -112,6 +114,7 @@ export class PostsComponent implements OnInit {
   openEditPost(task: Task) {
     this.showEditPost = true;
     this.selectedTask = task;
+    // this.router.navigate(['/post', task.id]);
   }
 
   CloseEditPost() {
