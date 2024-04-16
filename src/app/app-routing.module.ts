@@ -21,10 +21,10 @@ const routes: Routes = [
   {
     path: 'posts',
     component: PostsComponent,
-    // children: [{ path: 'posts/:id', component: EditPostComponent }],
+    // children: [{ path: 'post/:id', component: EditPostComponent }],
   },
   {
-    path: 'post/:id',
+    path: 'posts/:id',
     component: EditPostComponent,
   },
   {

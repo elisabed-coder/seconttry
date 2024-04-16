@@ -25,7 +25,7 @@
 <app-edit-post
   *ngIf="showEditPost"
   (CloseEditPost)="CloseEditPost()"
-  [selectedTask]="selectedTask"
   (UpdatePost)="UpdatePost($event)"
+  [selectedTask]="selectedTask"
 ></app-edit-post>
 <router-outlet></router-outlet>

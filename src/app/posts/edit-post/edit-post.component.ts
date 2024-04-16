@@ -1,6 +1,17 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  SimpleChanges,
+  OnChanges,
+  TemplateRef,
+  ViewChild,
+} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Task } from 'src/app/Model/Task';
+import { PostService } from 'src/app/Services/post.service';
 
 @Component({
   selector: 'app-edit-post',
@@ -10,16 +21,28 @@ import { Task } from 'src/app/Model/Task';
 export class EditPostComponent implements OnInit {
   @Output() CloseEditPost: EventEmitter<void> = new EventEmitter<void>();
   @Output() UpdatePost: EventEmitter<Task> = new EventEmitter<Task>();
+  @Input() selectedTask!: Task | null;
+  @ViewChild('loadingTemplate', { static: true })
+  loadingTemplate!: TemplateRef<any>;
 
-  @Input() selectedTask: Task | null = null;
+  // @Input() selectedTask: Task | null = null;
+  task: Task | null = null;
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private postservice: PostService
+  ) {}
 
+  taskId!: any;
   ngOnInit(): void {
-    this.route.paramMap.subscribe((params) => {
-      const postId = params.get('id');
-      // Now you can use this postId to fetch the post data or perform any other operation
+    this.route.params.subscribe((params) => {
+      this.taskId = params['id'];
     });
+
+    // this.route.data.subscribe((data) => {
+    //   this.task = data['task'];
+    // });
   }
 
   onCloseEditPost() {

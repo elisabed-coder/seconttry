@@ -114,7 +114,7 @@ export class PostsComponent implements OnInit {
   openEditPost(task: Task) {
     this.showEditPost = true;
     this.selectedTask = task;
-    // this.router.navigate(['/post', task.id]);
+    // this.router.navigate(['/posts', this.selectedTask.id]); // Corrected syntax
   }
 
   CloseEditPost() {
@@ -123,6 +123,7 @@ export class PostsComponent implements OnInit {
   }
 
   UpdatePost(updatedPost: Task) {
+    console.log(updatedPost);
     // Find the index of the updated post
     const index = this.allTasks.findIndex((task) => task.id === updatedPost.id);
 

@@ -6,4 +6,8 @@ import { Injectable } from '@angular/core';
 })
 export class PostService {
   constructor(public http: HttpClient) {}
+
+  getTask(taskId: any) {
+    return this.http.get(`http://localhost:4200/posts}`);
+  }
 }
