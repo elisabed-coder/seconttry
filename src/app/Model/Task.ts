@@ -4,7 +4,7 @@ export class Task {
     public user: User,
     public title: string,
     public body: string,
-    public id?: number
+    public id: any
   ) {}
 }
 export class User {

@@ -27,6 +27,7 @@ export class EditPostComponent implements OnInit {
 
   // @Input() selectedTask: Task | null = null;
   task: Task | null = null;
+  taskId!: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -34,15 +35,20 @@ export class EditPostComponent implements OnInit {
     private postservice: PostService
   ) {}
 
-  taskId!: any;
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
-      this.taskId = params['id'];
-    });
-
-    // this.route.data.subscribe((data) => {
-    //   this.task = data['task'];
-    // });
+    // const id = this.route.snapshot.paramMap.get('id');
+    // if (id !== null) {
+    //   this.taskId = +id;
+    //   // If selectedTask is not null and matches the taskId, assign it to task
+    //   if (this.selectedTask && this.selectedTask.id === this.taskId) {
+    //     this.task = this.selectedTask;
+    //   } else {
+    //     console.error(`Task with ID ${this.taskId} not found in selectedTask.`);
+    //   }
+    // } else {
+    //   console.error('ID parameter is null.');
+    // }
+    // console.log(this.task);
   }
 
   onCloseEditPost() {
